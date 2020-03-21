@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_21_152657) do
+ActiveRecord::Schema.define(version: 2020_03_21_154711) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -55,5 +55,16 @@ ActiveRecord::Schema.define(version: 2020_03_21_152657) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "user_organisation_relations", force: :cascade do |t|
+    t.integer "organisation_id", null: false
+    t.integer "admin_user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["admin_user_id"], name: "index_user_organisation_relations_on_admin_user_id"
+    t.index ["organisation_id"], name: "index_user_organisation_relations_on_organisation_id"
+  end
+
   add_foreign_key "events", "organisations"
+  add_foreign_key "user_organisation_relations", "admin_users"
+  add_foreign_key "user_organisation_relations", "organisations"
 end
