@@ -6,7 +6,8 @@ ActiveAdmin.register Event do
   form do |f|
   	f.semantic_errors
   	f.inputs do
-  		f.input :title
+		f.input :organisation  
+		f.input :title
   		f.input :description
   		f.input :start_time, as: :datetime_picker
   		f.input :end_time, as: :datetime_picker
