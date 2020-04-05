@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_05_170320) do
+ActiveRecord::Schema.define(version: 2020_04_05_182655) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -69,6 +69,16 @@ ActiveRecord::Schema.define(version: 2020_04_05_170320) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "content_blocks", force: :cascade do |t|
+    t.string "key"
+    t.string "title"
+    t.text "content"
+    t.integer "organisation_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["organisation_id"], name: "index_content_blocks_on_organisation_id"
+  end
+
   create_table "events", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -99,6 +109,7 @@ ActiveRecord::Schema.define(version: 2020_04_05_170320) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "content_blocks", "organisations"
   add_foreign_key "events", "organisations"
   add_foreign_key "user_organisation_relations", "admin_users"
   add_foreign_key "user_organisation_relations", "organisations"
