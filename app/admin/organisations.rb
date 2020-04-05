@@ -12,5 +12,22 @@ ActiveAdmin.register Organisation do
   	end
   	f.actions
   end
+
+  show do |o|
+
+  	attributes_table do
+  		row :name
+  		row :default_start_time
+  		row 'New event' do |o| link_to 'New event', new_admin_event_path(organisation_id: o.id) end
+  	end
+
+  	panel 'Events' do
+      table_for o.events do
+        column :start_time do |e| e.start_time end
+        column :title do |e| link_to(e.title, admin_event_path(e)) end
+      end
+    end
+
+  end
   
 end
