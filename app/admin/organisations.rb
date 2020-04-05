@@ -1,5 +1,7 @@
 ActiveAdmin.register Organisation do
 
+  scope_to :current_admin_user
+
   permit_params :name, :default_start_time
 
   form do |f|
