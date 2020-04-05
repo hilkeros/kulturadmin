@@ -1,7 +1,7 @@
 ActiveAdmin.register Event do
 
  
-  permit_params :title, :description, :start_time, :end_time, :organisation_id
+  permit_params :title, :description, :start_time, :end_time, :organisation_id, :youtube_link, :nationality
 
   form do |f|
     f.semantic_errors *f.object.errors.keys
@@ -15,6 +15,8 @@ ActiveAdmin.register Event do
     	f.input :description, as: :quill_editor
     	f.input :start_time, as: :datetime_picker
     	f.input :end_time, as: :datetime_picker
+      f.input :nationality
+      f.input :youtube_link
     	end
   	
     f.actions
@@ -26,6 +28,8 @@ ActiveAdmin.register Event do
       row (:description) { |event| raw(event.description) }
   		row :start_time
   		row :end_time
+      row :nationality
+      row :youtube_link
   	end
   end
 end
