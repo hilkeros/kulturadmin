@@ -10,7 +10,7 @@ ActiveAdmin.register Event do
 	  f.inputs do
 		f.input :organisation  
 		f.input :title
-  		f.input :description
+  		f.input :description, as: :quill_editor
   		f.input :start_time, as: :datetime_picker
   		f.input :end_time, as: :datetime_picker
   	end
@@ -21,6 +21,7 @@ ActiveAdmin.register Event do
   	attributes_table do
   		row :title
   		row :description
+      row (:description) { |event| raw(event.description) }
   		row :start_time
   		row :end_time
   	end
