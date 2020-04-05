@@ -4,6 +4,8 @@ ActiveAdmin.register Organisation do
 
   permit_params :name, :default_start_time
 
+  actions :all, except: [:new, :destroy]
+
   form do |f|
   	f.semantic_errors *f.object.errors.keys
   	f.inputs do
