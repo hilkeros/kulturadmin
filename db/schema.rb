@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_05_182655) do
+ActiveRecord::Schema.define(version: 2020_04_08_182110) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -89,6 +89,10 @@ ActiveRecord::Schema.define(version: 2020_04_05_182655) do
     t.integer "organisation_id"
     t.string "youtube_link"
     t.string "nationality"
+    t.string "facebook_link"
+    t.string "instagram_link"
+    t.string "website_link"
+    t.string "spotify_link"
     t.index ["organisation_id"], name: "index_events_on_organisation_id"
   end
 

@@ -1,7 +1,9 @@
 ActiveAdmin.register Event do
 
  
-  permit_params :title, :description, :start_time, :end_time, :organisation_id, :youtube_link, :nationality
+  permit_params :title, :description, :start_time, :end_time, :organisation_id, :nationality,
+                :youtube_link, :website_link, :facebook_link, :instagram_link, :spotify_link
+  
 
   form do |f|
     f.semantic_errors *f.object.errors.keys
@@ -17,6 +19,10 @@ ActiveAdmin.register Event do
     	f.input :end_time, as: :datetime_picker
       f.input :nationality
       f.input :youtube_link
+      f.input :website_link
+      f.input :facebook_link
+      f.input :instagram_link
+      f.input :spotify_link
     	end
   	
     f.actions
@@ -30,6 +36,10 @@ ActiveAdmin.register Event do
   		row :end_time
       row :nationality
       row :youtube_link
+      row :website_link
+      row :facebook_link
+      row :instagram_link
+      row :spotify_link
   	end
   end
 end
